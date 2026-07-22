@@ -1,0 +1,101 @@
+// School Bus Management System (20 Marks)
+
+// A school bus has 15 seats.
+
+// Requirements:
+// Store seat numbers in an array.
+// Ask the user to choose one of the following:
+// Book Seat
+// Cancel Booking
+// Show Available Seats
+// If booking:
+// Ask for the seat number.
+// If available, remove it from the available seats and add it to a booked seats array.
+// Otherwise display "Seat Already Booked."
+// If cancelling:
+// Ask for the seat number.
+// Remove it from the booked seats array.
+// Add it back to the available seats array.
+// Display the updated list of available and booked seats.
+
+let seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+let booked = [];
+
+let choice = prompt("Enter 1 for Book Seat, 2 for Cancel Booking, 3 for Show Available Seats");
+
+if (choice == 1) {
+
+    let seat = Number(prompt("Enter seat number"));
+    let found = false;
+
+    for (let i = 0; i < seats.length; i++) {
+
+        if (seats[i] == seat) {
+
+            found = true;
+
+            booked[booked.length] = seat;
+
+            for (let j = i; j < seats.length - 1; j++) {
+                seats[j] = seats[j + 1];
+            }
+
+            seats.length = seats.length - 1;
+
+            break;
+        }
+    }
+
+    if (found == true) {
+        alert("Seat Booked Successfully");
+    }
+    else {
+        alert("Seat Already Booked");
+    }
+}
+
+else if (choice == 2) {
+
+    let seat = Number(prompt("Enter seat number"));
+    let found = false;
+
+    for (let i = 0; i < booked.length; i++) {
+
+        if (booked[i] == seat) {
+
+            found = true;
+
+            seats[seats.length] = seat;
+
+            for (let j = i; j < booked.length - 1; j++) {
+                booked[j] = booked[j + 1];
+            }
+
+            booked.length = booked.length - 1;
+
+            break;
+        }
+    }
+
+    if (found == true) {
+        alert("Booking Cancelled");
+    }
+    else {
+        alert("This Seat is Not Booked");
+    }
+}
+
+else if (choice == 3) {
+
+    let answer = "Available Seats: ";
+
+    for (let i = 0; i < seats.length; i++) {
+        answer = answer + seats[i] + " ";
+    }
+
+    alert(answer);
+}
+
+else {
+    alert("Wrong Choice");
+}
