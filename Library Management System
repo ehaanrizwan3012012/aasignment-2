@@ -1,0 +1,92 @@
+// Library Management System (20 Marks)
+
+// A school library keeps a list of available books.
+
+// Requirements:
+// Create an array containing at least 8 book names.
+// Ask the user to choose one of the following options:
+// Issue Book
+// Return Book
+// Search Book
+// Show All Books
+// If the user selects Issue Book:
+// Ask for the book name.
+// Search the array.
+// If found, remove it from the array.
+// Display "Book Issued Successfully".
+// Otherwise display "Book Not Available".
+// If the user selects Return Book:
+// Ask for the book name.
+// Add it to the library.
+// If the user selects Search Book:
+// Display whether the book exists.
+// If the user selects Show All Books:
+// Display every available book using a loop.
+
+let books = ["Harry Potter", "The Alchemist", "The Hobbit", "Pride and Prejudice", "The Great Gatsby", "1984", "Animal Farm", "The Little Prince"];
+
+let userInput = prompt("choose one of the following options: \n 1.Issue Book \n 2.Return Book \n 3.Search Books \n 4.Show All The Books");
+
+if (userInput == "1") {
+    let bookName = prompt("Enter A Book Name:");
+    let found = false;
+    for (let i = 0; i < books.length; i++) {
+        if (books[i] == bookName) {
+            found = true;
+
+            for (let j = i; j < books.length - 1; j++) {
+                books[j] = books[j + 1];
+            }
+            books.length = books.length - 1;
+            break;
+        }
+
+    }
+
+    if (found) {
+        alert("Book Issued Successfully");
+    } else {
+        alert("Book Not Available");
+    }
+
+}
+
+
+if (userInput == "2") {
+    let bookName = prompt("Enter the book name:");
+    books[books.length] = bookName;
+    alert("Book Returned Successfully");
+}
+
+if (userInput == "3") {
+    
+    let bookName = prompt("Enter the book name:");
+    let found = false;
+
+    for (let i = 0; i < books.length; i++) {
+        if (books[i] == bookName) {
+            found = true;
+            break;
+        }
+    }
+
+    if (found) {
+        alert("Book is Available");
+    } else {
+        alert("Book Not Available");
+    }
+}
+
+if (userInput == "4") {
+    let allBooks = "";
+
+    for (let i = 0; i < books.length; i++) {
+        allBooks = allBooks + (i + 1) + ". " + books[i] + "\n";
+    }
+
+    alert("Available Books: \n " + allBooks);
+}
+
+else {
+    alert("Book Not Available");
+}
