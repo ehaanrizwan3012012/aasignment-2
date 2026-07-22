@@ -1,0 +1,40 @@
+// Lucky Draw Game (20 Marks)
+
+// Create a lucky draw game.
+
+// Requirements:
+// Generate a random number between 1 and 20.
+// Give the player 5 chances.
+// Ask the player to guess the number.
+// If guessed correctly:
+// Display "Congratulations! You Won."
+// Stop the loop immediately.
+// If the player fails after 5 attempts:
+// Display "Better Luck Next Time."
+// Display the correct number.
+// Also display the number of attempts used.
+
+let randomNumber = Math.floor(Math.random() * 20) + 1;
+let attempts = 0;
+let win = false;
+
+for (let i = 1; i <= 5; i++) {
+    let guess = Number(prompt("Guess a number from 1 to 20"));
+
+    attempts++;
+
+    if (guess == randomNumber) {
+        alert("Congratulations! You Won.");
+        win = true;
+        break;
+    } else {
+        alert("Wrong guess! Try again.");
+    }
+}
+
+if (win == false) {
+    alert("Better Luck Next Time.");
+    alert("The correct number is " + randomNumber);
+}
+
+alert("Number of attempts used: " + attempts);
